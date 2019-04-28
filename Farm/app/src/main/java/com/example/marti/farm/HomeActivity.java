@@ -28,11 +28,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    List<weightDatas> weight_datas = new ArrayList<>();
-    String laws, irws, lpws;
-    SQLiteDatabase db;
-    TextView results;
-    List<weightDatas> datas = new ArrayList<>();
+
 
 
     @Override
@@ -41,8 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Button searchBTN = (Button) findViewById(R.id.seachBTN);
         Button eventBTN = (Button) findViewById(R.id.eventBTN);
-        results = (TextView)findViewById(R.id.results);
-        results.setMovementMethod(new ScrollingMovementMethod());
+        Button weatherBTN = (Button) findViewById(R.id.weather);
+
 
 
         eventBTN.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +53,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(v.getContext(), search.class);
+                startActivityForResult(intent, 0);
+                //return true;
+            }
+        });
+        weatherBTN.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
                 startActivityForResult(intent, 0);
                 //return true;
             }

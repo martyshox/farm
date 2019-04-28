@@ -101,7 +101,7 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
             openDatabase();      // open (create if needed) database
             insertData();        // insert data
             db.close();         // make sure to release the DB
-            txtMsg.append("\n- All Done!");
+            //txtMsg.append("\n- All Done!");
         }
         catch (Exception e)
         {
@@ -129,7 +129,7 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
             db = SQLiteDatabase.openDatabase(myDbPath, null,
                     SQLiteDatabase.CREATE_IF_NECESSARY);
 
-            txtMsg.append("\n- Database was opened");
+            //txtMsg.append("\n- Database was opened");
         }
         catch (SQLiteException e)
         {
@@ -177,8 +177,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
 
 
 
-                    int rowPosition = (int) db.insert("doses", "v1", initialValues);
-                    txtMsg.append("\n- Data Inserted to Database Successfully: " + rowPosition);
+                    db.insert("doses", "v1", initialValues);
+                    //txtMsg.append("\n- Data Inserted to Database Successfully: " + rowPosition);
                     new Send_dose_Server().execute();
 
 
@@ -202,8 +202,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
                     initialValues1.put("Date", wdate);
 
 
-                    int rowPosition1 = (int) db.insert("weight", "v1", initialValues1);
-                    txtMsg.append("\n- Data Inserted to Database Successfully: " + rowPosition1);
+                    db.insert("weight", "v1", initialValues1);
+                    //txtMsg.append("\n- Data Inserted to Database Successfully: " + rowPosition1);
                     new Send_weight_Server().execute();
                     break;
 
@@ -222,8 +222,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
                     initialValues2.put("FeedAmount", feedAmount);
                     initialValues2.put("Date", fdate);
 
-                    int rowPosition2 = (int) db.insert("feed", "v1", initialValues2);
-                    txtMsg.append("\n- Data Inserted to Database Successfully: " + rowPosition2);
+                    db.insert("feed", "v1", initialValues2);
+                    //txtMsg.append("\n- Data Inserted to Database Successfully: " + rowPosition2);
                     new Send_feed_Server().execute();
                     break;
 
@@ -243,8 +243,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
                     initialValues3.put("Amount", camount);
 
 
-                    int rowPosition3 = (int) db.insert("crops", "v1", initialValues3);
-                    txtMsg.append("\n- Data Inserted to Database Successfully: " + rowPosition3);
+                    db.insert("crops", "v1", initialValues3);
+                    //txtMsg.append("\n- Data Inserted to Database Successfully: " + rowPosition3);
                     break;
 
 
@@ -269,11 +269,11 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         try
         {
             db.execSQL("DROP TABLE IF EXISTS results;");
-            txtMsg.append("\n- DropTable - dropped!!");
+            //txtMsg.append("\n- DropTable - dropped!!");
         }
         catch (Exception e)
         {
-            txtMsg.append("\n- #Error dropTable: " + e.getMessage());
+            //txtMsg.append("\n- #Error dropTable: " + e.getMessage());
             finish();
         }
     }
@@ -307,13 +307,13 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
             // commit your changes
             db.setTransactionSuccessful();
 
-            txtMsg.append("\n- Table was created");
+            //txtMsg.append("\n- Table was created");
 
         }
 
         catch (SQLException e1)
         {
-            txtMsg.append("\n- #Error Creating Table: " + e1.getMessage());
+            //txtMsg.append("\n- #Error Creating Table: " + e1.getMessage());
             finish();
         }
 

@@ -36,6 +36,7 @@
         <activity android:name=".FeedActivity" />
         <activity android:name=".ScanActivity" />
         <activity android:name=".WeightActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".search"></activity>
     </application>
 
